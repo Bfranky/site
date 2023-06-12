@@ -1,32 +1,153 @@
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+
 function Navbar() {
+  const url ="src/assets/7.jpg";
+  
+  const items = [
+    {
+      id: 0,
+      name: 'Cobol'
+    },
+    {
+      id: 1,
+      name: 'JavaScript'
+    },
+    {
+      id: 2,
+      name: 'Basic'
+    },
+    {
+      id: 3,
+      name: 'PHP'
+    },
+    {
+      id: 4,
+      name: 'Java'
+    }
+  ]
+
+  const handleOnSearch = (string, results) => {
+    // onSearch will have as the first callback parameter
+    // the string searched and for the second the results.
+    console.log(string, results)
+  }
+
+  const handleOnHover = (result) => {
+    // the item hovered
+    console.log(result)
+  }
+
+  const handleOnSelect = (item) => {
+    // the item selected
+    console.log(item)
+  }
+
+  const handleOnFocus = () => {
+    console.log('Focused')
+  }
+
+  const formatResult = (item) => {
+    return (
+      <>
+        <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span>
+        <span style={{ display: 'block', textAlign: 'left' }}>name: {item.name}</span>
+      </>
+    )
+  }
   return (
 
     <div>
       <div className="pt-0 pr-0 pb-0 pl-0 mt-0 mr-0 mb-0 ml-0"></div>
-      <div className="bg-sky-500/[.06]">
+      <div className="bg-purple-500">
         <div className="flex-col flex">
           <div className="w-full border-b-2 border-indigo-200">
-            <div className="bg-indigo h-16 justify-between items-center mx-auto px-4 flex">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 h-16">
               <div>
-                <img src="https://res.cloudinary.com/speedwares/image/upload/v1659284687/windframe-logo-main_daes7r.png"
-                  className="block btn- h-8 w-auto" alt="" />
+              <img
+                src={url}
+                alt=""
+                className="h-10 mr-3"
+                 fill
+                  />
               </div>
-              <div className="lg:block mr-auto ml-40 hidden relative max-w-xs">
-                <p className="pl-3 items-center flex absolute inset-y-0 left-0 pointer-events-none">
-                  <span className="justify-center items-center flex">
-                    <span className="justify-center items-center flex">
-                      <span className="items-center justify-center flex">
-                        <svg className="w-5 h-5 text-red-400" fill="none" viewbox="0 0 24 24" stroke="currentColor"
-                          stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0
-                      11-14 0 7 7 0 0114 0z"/></svg>
-                      </span>
-                    </span>
-                  </span>
-                </p>
-                <input placeholder="Type to search" type="search" className="border border-indigo-900 focus:ring-red-600
-              focus:border-indigo-500 sm:text-sm w-full rounded-lg pt-2 pb-2 pl-10 px-3 py-2"/>
+              {/* mobile toggle of the search button */}
+              {/* <button
+                type="button"
+                data-collapse-toggle="navbar-search"
+                aria-controls="navbar-search"
+                aria-expanded="false"
+                className="md:hidden text-gray-500  hover:bg-gray-100  focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 mr-1"
+                onClick={hid}
+              >
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                <span className="sr-only">Search</span>
+              </button>
+              <div className="w-[22rem] hidden border-2 rounded-xl md:block">
+                <form onSubmit={handleSubmit}>
+                  <ReactSearchAutocomplete
+                    styling={{
+                      width: "inhert",
+                      boxShadow: "none",
+                      height: "38px",
+                      fontFamily: "inhert",
+                      borderRadius: "10px",
+                    }}
+                    className=""
+                    items={articles}
+                    fuseOptions={{ keys: ["title"] }}
+                    onSearch={handleOnSearch}
+                    onSelect={handleOnSelect}
+                    formatResult={formatResult}
+                  />
+                </form>
+              </div> */}
+
+              {/* end mobile toggle */}
+
+              {/* search button */}
+              <div className="flex md:order-2">
+
+              <div className="relative mt-3 md:hidden pt-1 pr-1 pb-1 pl-20">
+                <div className="">
+              <div style={{ 
+                width: '400px',               
+               }}>
+                      <ReactSearchAutocomplete
+                          styling={{
+                            width: 'inhert',
+                      boxShadow: "none",
+                      height: "46px",
+                      fontFamily: "inhert",
+                      borderRadius: "10px",
+               
+                          }}
+                      className=''
+                        items={items}
+                        onSearch={handleOnSearch}
+                        onHover={handleOnHover}
+                        onSelect={handleOnSelect}
+                        onFocus={handleOnFocus}
+                        autoFocus
+                        formatResult={formatResult}
+                      />
+                    </div>
+                </div>
               </div>
-              <div className="md:space-x-6 justify-end items-center ml-auto flex space-x-3">
+              
+             
+              <div className="md:space-x-6 justify-end items-center ml-auto flex flex-wrap">
                 <div className="relative">
                   <p className="pt-1 pr-1 pb-1 pl-1 bg-white text-gray-700 rounded-full transition-all duration-200
                 hover:text-gray-900 focus:outline-none hover:bg-gray-100">
@@ -67,6 +188,7 @@ function Navbar() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div></div>
   );
