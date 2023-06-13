@@ -40,7 +40,7 @@ function Footer(){
       </a>
     </div>
   </div>
-  <div className="mx-6 py-10 text-center md:text-left">
+  <div className="mx-6 py-10 text-right md:text-left">
     <div className="flex flex-wrap md:flex-cols-2 lg:flex-cols-4 justify-between">
       <div className="">
         <h6 className="
@@ -55,7 +55,7 @@ function Footer(){
 
           Frankie Blog
         </h6>
-        <p>
+        <p className=" text-right">
           This is a blog centered on the technology space in Africa.<br/> This is a place where tech experts, <br/>
           enthusiasts and newbies gather and share  their stories, news and events. 
         </p>
